@@ -1,0 +1,20 @@
+name: MagicMaster
+description: Stronger enchanting tables without a higher level cost.
+version: '${version}'
+
+main: me.redst.magicmaster.MagicMasterPlugin
+api-version: '1.21.11'
+
+authors: [ _RedST ]
+
+commands:
+  magicmaster:
+    description: Manage MagicMaster.
+    usage: /magicmaster help
+    aliases: [ mm ]
+    permission: magicmaster.admin
+
+permissions:
+  magicmaster.admin:
+    description: Allows use of the MagicMaster commands.
+    default: op

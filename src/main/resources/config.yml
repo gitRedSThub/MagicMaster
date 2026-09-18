@@ -1,0 +1,122 @@
+multiply-level:
+
+  # Master switch. Change it in game with /magicmaster toggle multiply-level
+  enabled: true
+
+  # The table pretends it's working at this many times its real level.
+  # A level 15 offer at 2.00 gives you a level 30 enchantment for the level 15
+  # price. Crank it to 4.00 and that same offer rolls like level 60.
+  # Range: 0.01 - 100.00
+  default-multiplier: 2.00
+
+  # Per-item multipliers. These beat everything below.
+  #
+  # Items you don't list here just use the tool material or the default, so
+  # there's no need to write out every item in the game.
+  #
+  # Setting enabled to false parks the override without deleting it. The item
+  # falls back like it was never listed. Handy when you want to try something
+  # and put it back later.
+  #
+  # BOOK and ENCHANTED_BOOK are the same setting. The table eats one and spits
+  # out the other, so splitting them would just be confusing.
+  items:
+
+    ENCHANTED_BOOK:
+      enabled: false
+      # Range: 0.01 - 100.00
+      multiplier: 2.00
+
+    DIAMOND_SWORD:
+      enabled: false
+      # Range: 0.01 - 100.00
+      multiplier: 2.00
+
+  # Multipliers for a whole tool family at once, so you don't have to list six
+  # netherite tools by hand.
+  #
+  # Swords, pickaxes, axes, shovels and hoes. That's it. A golden apple is not a
+  # gold tool and a diamond block is not a diamond tool.
+  #
+  # Armor, bows, crossbows and tridents aren't tool families, so they use the
+  # default multiplier. Give them an item override above if you want them
+  # different.
+  #
+  # A material set to false drops back to the default multiplier.
+  material-mode:
+
+    enabled: true
+
+    materials:
+
+      WOOD:
+        enabled: true
+        # Range: 0.01 - 100.00
+        multiplier: 2.00
+
+      STONE:
+        enabled: true
+        multiplier: 2.00
+
+      IRON:
+        enabled: true
+        multiplier: 2.00
+
+      GOLD:
+        enabled: true
+        multiplier: 2.00
+
+      DIAMOND:
+        enabled: true
+        multiplier: 2.00
+
+      NETHERITE:
+        enabled: true
+        multiplier: 2.00
+
+
+# Hands out extra enchantments once the effective level gets high enough.
+#
+# Extras are picked from what the table could have given that item anyway, so a
+# pickaxe gets Fortune and never Sharpness. If nothing compatible is left it
+# adds fewer instead of forcing something stupid onto the item.
+enchantment-plus:
+
+  # Master switch. /magicmaster toggle enchantment-plus
+  enabled: true
+
+  # Nothing happens below this effective level.
+  # Range: 1.00 - 1000.00
+  threshold-level: 15.00
+
+  # How much effective level buys one more helping of extras.
+  # With the defaults: 30 gets you 1 extra, 45 gets you 2, 60 gets you 3.
+  # Range: 0.01 - 1000.00
+  interval: 15.00
+
+  # How many extras per helping. 20 per enchantment is the hard ceiling no
+  # matter what you put here.
+  # Range: 1.00 - 20.00
+  additional-enchantments: 1.00
+
+
+# Bumps the levels of whatever the table rolled.
+#
+# It stops at each enchantment's real maximum. Sharpness IV plus 3 is Sharpness
+# V, not VII. Unbreaking caps at III, so it gets to III and stays there.
+level-plus:
+
+  # Master switch. /magicmaster toggle level-plus
+  enabled: true
+
+  # Nothing happens below this effective level.
+  # Range: 1.00 - 1000.00
+  threshold-level: 15.00
+
+  # How much effective level buys one more helping of levels.
+  # Range: 0.01 - 1000.00
+  interval: 15.00
+
+  # Levels added per helping.
+  # Range: 0.01 - 20.00
+  levels-per-interval: 1.00
